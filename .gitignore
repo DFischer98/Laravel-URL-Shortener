@@ -7,3 +7,6 @@ composer.lock
 .DS_Store
 Thumbs.db
 environment.php
+public/packages/barryvdh/
+public/packages/maximebf/
+app/storage/debugbar/

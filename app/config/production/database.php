@@ -22,25 +22,16 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/',
 			'database'  => 'P4',
-			'username'  => 'root',
-			'password'  => 'root',
+			'username'  => 'admin9yKrURP',
+			'password'  => 'UjmanXIxR23h',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
 
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'homestead',
-			'username' => 'homestead',
-			'password' => 'secret',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
+		
 
 	),
 
