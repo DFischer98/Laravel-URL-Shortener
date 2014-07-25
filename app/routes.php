@@ -74,7 +74,6 @@ Route::get('/mysql-test', function() {
 
 });
 
-    
 
 // Debug
 Route::get('/debug', function() {
@@ -125,4 +124,4 @@ Route::get('/debug', function() {
 
 
 // Leave this last so routes.php can catch other site URIs first.
-Route::get('/{redirect_id?}', 'redirectController@redirect');
+Route::get('/{redirect_key?}', 'redirectController@callRedirect');

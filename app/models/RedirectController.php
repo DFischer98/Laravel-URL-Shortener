@@ -2,13 +2,13 @@
 
 class RedirectController extends BaseController{
 
-	public function redirect($given_redirect){
-		$user_redirect = URLRedirect::whereRedirectKey($given_redirect)->get();
-		Redirect::away($user_redirect->shortened_url);
+	public function callRedirect($given_redirect){
+		$called_redirect = URLRedirect::whereRedirectKey($given_redirect)->first();
+		//$called_redirect = URLRedirect::find(1);
+		$called_redirect->hits = $called_redirect->hits + 1;
+		$called_redirect->save();
 
-		$redirect->hits = $redirect->hits + 1;
-
-		$redirect->save();
+		return Redirect::away($called_redirect->shortened_url);
 
 
 	}
