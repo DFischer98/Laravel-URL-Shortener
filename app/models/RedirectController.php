@@ -2,38 +2,83 @@
 
 class RedirectController extends BaseController{
 
-    public function redirect($redirect_id){
-        return Redirect::away(UrlCreator::urlFix($redirect_id));
-    }
+	public function redirect($given_redirect){
+		$user_redirect = URLRedirect::whereRedirectKey($given_redirect)->get();
+		Redirect::away($user_redirect->shortened_url);
 
-    public function homepage(){
-        return View::make('index');
-    }
+		$redirect->hits = $redirect->hits + 1;
 
-    public function generateRedirect(){
-        // Get query data 
-        $data = Input::all();
-
-        // Validate URL
-        $rules = array(
-            'URL' => 'active_url'
-        );
-
-         $validator = Validator::make($data, $rules);
+		$redirect->save();
 
 
-        if ($validator->passes()) {
-            echo 'Valid URL';
-            echo '<br>' . str_random(6);
-            //make redirect
-        }
+	}
 
-        else {
-            echo 'Invalid URL';
-        }
-        //Send to error page
-        //return View::make('generate_error');
+	public function homepage(){
+		return View::make('index');
+	}
 
-    }
+	public function generateRedirect(){
+		// Get query data 
+		$url = Input::get('URL');
+		
+		//format for validation URL check
+		$url = UrlFormatting::stripUrl($url);
+		$data = array('URL' => $url);
+
+
+		// Validate URL 
+		$rules = array(
+			'URL' => 'active_url'
+		);
+
+
+		 $urlValidator = Validator::make($data, $rules);
+
+
+		if ($urlValidator->passes()) {
+			//generate unique redirect key, check with validation
+			$data = array('key' => str_random(6));
+			$rules = array('key' => 'unique:redirects,redirect_key');
+			$keyValidator = Validator::make($data, $rules);
+
+			//If key exists, loop until unique key is generated
+			while($keyValidator->fails()){
+				$data = array('key' => str_random(6));
+				$keyValidator = Validator::make($data, $rules);
+			}
+			
+			//make object & save redirect
+			$redirect = new URLRedirect;
+			$redirect->redirect_key = $data['key'];
+			//turn stripped URL into full URL for redirecting
+			$redirect->shortened_url = UrlFormatting::completeUrl($url);
+			$redirect->hits = 0;
+
+			//user assignment, WIP
+			$logged_in_user = False;
+			
+			if($logged_in_user){
+				//link FK to user
+			}
+			//assign FK null
+			else{
+				$redirect->user_id = NULL;
+			}
+
+			$redirect->save();
+			//echo link to redirect
+			echo '<a href="localhost/' . $redirect->redirect_key . '"">' 
+			. 'localhost/' . $redirect->redirect_key . '</a>';
+
+
+		}
+
+		else {
+			echo 'Invalid URL';
+		}
+		//Send to error page
+		//return View::make('generate_error');
+
+	}
 }
 

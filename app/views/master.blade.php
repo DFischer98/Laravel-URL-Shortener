@@ -6,6 +6,10 @@
 		<link rel='stylesheet' type='text.css' href='../style.css'>
 	</head>
 	<body>
+		@if(Session::get('flash_message'))
+        	<div class='flash-message'>{{ Session::get('flash_message') }}</div>
+    	@endif
+		
 		@yield('nav')
 
 		@yield ('content')

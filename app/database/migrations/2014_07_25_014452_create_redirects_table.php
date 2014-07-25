@@ -22,9 +22,11 @@ class CreateRedirectsTable extends Migration {
         $table->text('shortened_url');
         $table->integer('hits');
         $table->boolean('custom_key');
+        // Foreign Key
+        $table->integer('user_id')->unsigned()->nullable();
+		$table->foreign('user_id')->references('id')->on('users'); 
 
-        // This generates two columns: `created_at` and `updated_at` to
-        // keep track of changes to a row
+		// Timestamp
         $table->timestamps();
 
 	});

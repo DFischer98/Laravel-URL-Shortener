@@ -23,6 +23,45 @@ Route::get('/generate', function(){
 	return Redirect::action('redirectController@homepage');
 });
 
+// User signup
+Route::get('/signup',
+    array(
+        'before' => 'guest',
+        function() {
+            return View::make('signup');
+        }
+    )
+);
+
+// Signup
+Route::post('/signup', 
+    array(
+        'before' => 'csrf', 
+        function() {
+
+            $user = new User;
+            $user->email    = Input::get('email');
+            $user->password = Hash::make(Input::get('password'));
+            $user->email    = Input::get('email');
+
+            # Try to add the user 
+            try {
+                $user->save();
+            }
+            # Fail
+            catch (Exception $e) {
+                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+            }
+
+            # Log the user in
+            Auth::login($user);
+
+            return Redirect::to('/')->with('flash_message', 'Welcome to my URL shortener!');
+
+        }
+    )
+);
+
 
 // Test mySQL connection
 Route::get('/mysql-test', function() {
@@ -34,6 +73,8 @@ Route::get('/mysql-test', function() {
     return Pre::render($results);
 
 });
+
+    
 
 // Debug
 Route::get('/debug', function() {
