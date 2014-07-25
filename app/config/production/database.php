@@ -22,7 +22,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'mysql://127.4.4.2:3306',
+			'host'      => '127.4.4.2:3306/',
 			'database'  => 'p4',
 			'username'  => 'adminSU2tiMP',
 			'password'  => '2ZeqWVGNRBWB',
