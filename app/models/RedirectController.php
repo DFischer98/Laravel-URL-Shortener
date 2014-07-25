@@ -66,9 +66,8 @@ class RedirectController extends BaseController{
 			}
 
 			$redirect->save();
-			//echo link to redirect
-			echo '<a href="/' . $redirect->redirect_key . '"">' 
-			. 'localhost/' . $redirect->redirect_key . '</a>';
+			return '<a href="' . URL::to('/', $redirect->redirect_key) . '">'
+				. URL::to('/', $redirect->redirect_key);
 
 
 		}
