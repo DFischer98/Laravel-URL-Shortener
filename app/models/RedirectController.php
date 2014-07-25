@@ -1,6 +1,6 @@
 <?php
 
-class RedirectController extends BaseController{
+class redirectController extends BaseController{
 
 	public function callRedirect($given_redirect){
 		$called_redirect = URLRedirect::whereRedirectKey($given_redirect)->first();
@@ -67,7 +67,7 @@ class RedirectController extends BaseController{
 
 			$redirect->save();
 			//echo link to redirect
-			echo '<a href="localhost/' . $redirect->redirect_key . '"">' 
+			echo '<a href="/' . $redirect->redirect_key . '"">' 
 			. 'localhost/' . $redirect->redirect_key . '</a>';
 
 
