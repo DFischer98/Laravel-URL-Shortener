@@ -1,6 +1,6 @@
 <?php
 
-class redirectController extends BaseController{
+class RedirectController extends BaseController{
 
 	public function callRedirect($given_redirect){
 		$called_redirect = URLRedirect::whereRedirectKey($given_redirect)->first();

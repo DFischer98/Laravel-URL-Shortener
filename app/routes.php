@@ -12,15 +12,15 @@
 */
 
 // Homepage
-Route::get('/', 'redirectController@homepage');
+Route::get('/', 'RedirectController@homepage');
 
 // The homepage redirect form submits here via post, will experiment w/ ajax later.
-Route::post('/generate', 'redirectController@generateRedirect');
+Route::post('/generate', 'RedirectController@generateRedirect');
 
 
 // Returns users to homepage form
 Route::get('/generate', function(){
-	return Redirect::action('redirectController@homepage');
+	return Redirect::action('RedirectController@homepage');
 });
 
 // User signup
