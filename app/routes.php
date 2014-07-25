@@ -124,4 +124,4 @@ Route::get('/debug', function() {
 
 
 // Leave this last so routes.php can catch other site URIs first.
-Route::get('/{redirect_key?}', 'redirectController@callRedirect');
+Route::get('/{redirect_key?}', 'RedirectController@callRedirect');
