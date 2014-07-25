@@ -22,10 +22,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/',
-			'database'  => 'P4',
-			'username'  => 'admin9yKrURP',
-			'password'  => 'UjmanXIxR23h',
+			'host'      => 'mysql://127.4.4.2:3306/',
+			'database'  => 'p4',
+			'username'  => 'adminSU2tiMP',
+			'password'  => '2ZeqWVGNRBWB',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
