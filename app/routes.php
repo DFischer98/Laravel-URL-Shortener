@@ -33,6 +33,27 @@ Route::get('/signup',
     )
 );
 
+Route::get('/testing', function(){
+	$url = 'conciergeintroductions.com';
+	//$url = UrlFormatting::completeUrl($url);
+	echo $url . '<br>';
+
+	$data = array('URL' => $url);
+	$rule = array('URL' => 'active_url');
+
+	$validator = Validator::make($data, $rule);
+
+	if ($validator->passes()){
+		echo 'valid';
+	}
+
+	else {
+			echo 'invalid';
+	}
+});
+
+
+
 // Signup
 Route::post('/signup', 
     array(
