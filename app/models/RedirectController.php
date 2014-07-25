@@ -22,7 +22,7 @@ class RedirectController extends BaseController{
 		$url = Input::get('URL');
 		
 		//format for validation URL check
-		$url = UrlFormatting::stripUrl($url);
+		$url = UrlFormatting::completeUrl($url);
 		$data = array('URL' => $url);
 
 
@@ -51,7 +51,7 @@ class RedirectController extends BaseController{
 			$redirect = new URLRedirect;
 			$redirect->redirect_key = $data['key'];
 			//turn stripped URL into full URL for redirecting
-			$redirect->shortened_url = UrlFormatting::completeUrl($url);
+			$redirect->shortened_url = $url;
 			$redirect->hits = 0;
 
 			//user assignment, WIP

@@ -12,8 +12,12 @@ Class UrlFormatting{
 			return $incomplete_url;
 		}
 
-		else {
+		elseif(Str::lower(substr($incomplete_url, 0, 4)) == 'www.'){
 			return 'http://' . $incomplete_url;
+		}
+
+		else {
+			return 'http://www.' . $incomplete_url;
 		} ;
 	}
 
