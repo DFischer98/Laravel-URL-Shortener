@@ -1758,12 +1758,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/barryvdh/laravel-debugbar.git",
-            "reference": "0ca928a9437c5d5754b22612147ed2b2958c1e4d"
+            "reference": "d045d5a67590cefe348c034243fa18daf1c8cb56"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/0ca928a9437c5d5754b22612147ed2b2958c1e4d",
-            "reference": "0ca928a9437c5d5754b22612147ed2b2958c1e4d",
+            "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d045d5a67590cefe348c034243fa18daf1c8cb56",
+            "reference": "d045d5a67590cefe348c034243fa18daf1c8cb56",
             "shasum": ""
         },
         "require": {
@@ -1772,11 +1772,11 @@
             "php": ">=5.3.0",
             "symfony/finder": "~2.3"
         },
-        "time": "2014-07-22 13:36:20",
+        "time": "2014-07-26 11:40:53",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.x-dev"
+                "dev-master": "1.6-dev"
             }
         },
         "installation-source": "dist",

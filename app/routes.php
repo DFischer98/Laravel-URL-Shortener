@@ -12,58 +12,19 @@
 */
 
 // Homepage
-Route::get('/', 'RedirectController@homepage');
-
-// The homepage redirect form submits here via post, will experiment w/ ajax later.
-Route::post('/generate', 'RedirectController@generateRedirect');
-
+Route::get('/', 'HomeController@homepage');
 
 // Returns users to homepage form
-Route::get('/generate', function(){
-	return Redirect::action('RedirectController@homepage');
-});
-
-
+Route::controller('generate', 'RedirectController');
 
 // User signup
-Route::get('/signup', 'UserController@getSignup');
-
-
-
-// Signup
-Route::post('/signup', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $user = new User;
-            $user->email    = Input::get('email');
-            $user->password = Hash::make(Input::get('password'));
-            $user->email    = Input::get('email');
-
-            # Try to add the user 
-            try {
-                $user->save();
-            }
-            # Fail
-            catch (Exception $e) {
-                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
-            }
-
-            # Log the user in
-            Auth::login($user);
-
-            return Redirect::to('/')->with('flash_message', 'Welcome to my URL shortener!');
-
-        }
-    )
-);
+Route::controller('signup', 'UserController');
 
 // Debug
 Route::get('/debug', 'DebugController@debug');
 
-//Simulate a redirect without actually redirecting
-Route::get('/test/{redirect_key?}', 'RedirectController@testRedirect');
+// Get statistics for given redirect key
+Route::get('/stats/{redirect_key?}', 'RedirectController@statistics');
 
 // Leave this last so routes.php can catch other site URIs first
 Route::get('/{redirect_key?}', 'RedirectController@callRedirect');
