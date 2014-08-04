@@ -10,14 +10,16 @@
 			<div class='flash-message'>{{ Session::get('flash_message') }}</div>
 		@endif
 
-		@if(Auth::check())
-			<a href='/logout'>Log out {{ Auth::user()->email; }}</a>
-		@else 
-			<a href='/signup'>Sign up</a> or <a href='/login'>Log in</a> &#60;- ignore this
-		@endif
-		
-		@yield('nav')
+		<div class = 'navbar'>
+			<ul>
+				@yield ('navbar')
 
-		@yield ('content')
+				
+			</ul>
+		</div>
+
+		<div class = 'content'>
+			@yield ('content')
+		</div>
 	</body>
 </html>
