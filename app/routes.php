@@ -24,6 +24,9 @@ Route::post('/signup', ['before' => 'csrf', 'uses' => 'UserController@postSignup
 Route::post('/login', ['before' => 'csrf', 'uses' => 'UserController@postLogin'] );
 Route::get('/logout', ['before' => 'auth', 'uses' => 'UserController@getLogout'] );
 
+Route::get('/my-account', ['before' => 'auth', 'uses' => 'UserController@getAccount'] );
+
+
 // Debug
 Route::get('/debug', 'DebugController@debug');
 

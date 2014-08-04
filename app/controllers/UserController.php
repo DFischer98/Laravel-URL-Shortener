@@ -89,5 +89,10 @@ class UserController extends BaseController {
 		return Redirect::to('/');
 
 	}
+
+	public function getAccount() {
+		$redirects = Auth::user()->redirects;
+		echo Pre::render($redirects);
+	}
 		
 }

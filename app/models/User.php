@@ -26,7 +26,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function redirects() {
 		
 		# User has many redirects
-        return $this->hasMany('Redirect');
+        return $this->hasMany('URLRedirect');
         
     }
   	
