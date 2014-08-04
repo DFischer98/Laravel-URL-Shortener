@@ -46,7 +46,7 @@ class RedirectController extends BaseController{
 		return Redirect::action('HomeController@homepage');
 	}
 
-
+	//generate redirect
 	public function postIndex(){
 		// Get query data 
 		$url = Input::get('URL');
@@ -71,23 +71,28 @@ class RedirectController extends BaseController{
 
 			//redirect key recycling
 			if (!Auth::check()){
-				$data = array('url' => $url);
-				$rules = array('url' => 'unique:redirects,shortened_url');
-				$existing_key = Validator::make($data, $rules);
-
-				if($existing_key->fails()) {
-					$redirect = URLRedirect::whereShortenedUrl($url)->first();
-
-					/*
-					* SHOULD REDIRECT TO VIEW
-					*/
-
-					return '<a href="' . URL::to('/', $redirect->redirect_key) . '">'
-						. URL::to('/', $redirect->redirect_key);
-				}
+				//look for an existing redirect that doesnt belong to a user
+				$existing_redirect = DB::table( 'redirects' )->where( 'shortened_url', '=', $url )->whereNull('user_id')->first();
+					//return found redirect 
+					if (! is_null($existing_redirect)){
+						return '<a href="' . URL::to('/', $existing_redirect->redirect_key) . '">'
+						. URL::to('/', $existing_redirect->redirect_key);
+					}
 			}
 
+			//generate random key
+			$random_key = str_random(6);
 
+			//check if row exists in DB with key already used
+			$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
+
+			//generate new keys until unique value is made
+			while (! is_null($existing_key)){
+				$random_key = str_random(6);
+				$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
+			}
+
+			/*
 			//generate unique redirect key, check uniqeness with validation
 			$data = array('key' => str_random(6));
 			$rules = array('key' => 'unique:redirects,redirect_key');
@@ -99,14 +104,15 @@ class RedirectController extends BaseController{
 				$keyValidator = Validator::make($data, $rules);
 			}
 			
+			*/
+
 			//make object & save redirect
 			$redirect = new URLRedirect;
-			$redirect->redirect_key = $data['key'];
-			//turn stripped URL into full URL for redirecting
+			$redirect->redirect_key = $random_key;
 			$redirect->shortened_url = $url;
 			$redirect->hits = 0;
-
 			
+			//add FK user_id if logged in	
 			if (Auth::check()){
 				$redirect->user_id = Auth::user()->id;
 			}

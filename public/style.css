@@ -8,14 +8,12 @@ body{
 h1{
 	font-family: Roboto, sans-serif;
 	font-weight: 200;
+	text-align: center;
 }
 
 .flash-message {
 	width:100%;
-	position:absolute;
-	top:0;
-	left:0;
-	background-color: #81DBFC;
+	background-color: #A7A7A7;
 	text-align:center;
 	padding:5px;
 }
@@ -26,9 +24,10 @@ h1{
 	padding: 0;
 	border-style: solid;
 	border-width: 0px 0px 3px 0px;
-	border-color: blue;
+	border-color: #0099FF;
 	box-shadow: 0px 3px 5px #888888;
 	overflow: hidden;
+
 
 }
 
@@ -39,7 +38,10 @@ h1{
 }
 
 .navbar li {
-	display: inline;
+	box-sizing:border-box;
+ 	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	display: inline-block;
 	float: left;
 	width: 25%;
 	height: 50px;
@@ -57,19 +59,23 @@ h1{
 	height: 50px;
 	padding-top: 10px;
 	-o-transition:.5s;
-  	-ms-transition:.5s;
- 	-moz-transition:.5s;
-  	-webkit-transition:.5s;
-  	transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
 }
 
 .navbar a:hover{
-	background-color: #eee;
+	background-color: #eee; 
 }
 
 .navbar a:visited {
 	color: black;
 	text-decoration: none;
+}
+
+.current_page{
+	background-color: B2E0FF;
 }
 
 .underline {
@@ -78,10 +84,10 @@ h1{
 	border-bottom: 1px solid;
 	border-color: transparent;
 	-o-transition:.5s;
-  	-ms-transition:.5s;
- 	-moz-transition:.5s;
-  	-webkit-transition:.5s;
-  	transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
 }
 
 .underline:hover{
