@@ -92,20 +92,6 @@ class RedirectController extends BaseController{
 				$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
 			}
 
-			/*
-			//generate unique redirect key, check uniqeness with validation
-			$data = array('key' => str_random(6));
-			$rules = array('key' => 'unique:redirects,redirect_key');
-			$keyValidator = Validator::make($data, $rules);
-
-			//If key already exists, loop until unique key is generated
-			while($keyValidator->fails()){
-				$data = array('key' => str_random(6));
-				$keyValidator = Validator::make($data, $rules);
-			}
-			
-			*/
-
 			//make object & save redirect
 			$redirect = new URLRedirect;
 			$redirect->redirect_key = $random_key;
