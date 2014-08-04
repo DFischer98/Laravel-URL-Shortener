@@ -106,11 +106,9 @@ class RedirectController extends BaseController{
 			$redirect->shortened_url = $url;
 			$redirect->hits = 0;
 
-			//user assignment, WIP
-			$logged_in_user = False;
 			
 			if (Auth::check()){
-				//link FK to user
+				$redirect->user_id = Auth::user()->id;
 			}
 			else{
 				$redirect->user_id = NULL;

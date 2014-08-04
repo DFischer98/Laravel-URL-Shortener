@@ -17,14 +17,18 @@ Route::get('/', 'HomeController@homepage');
 // Returns users to homepage form
 Route::controller('generate', 'RedirectController');
 
-// User signup
-Route::controller('signup', 'UserController');
+// User handling
+Route::get('/signup', 'UserController@getSignup'); 
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', ['before' => 'csrf', 'uses' => 'UserController@postSignup'] );
+Route::post('/login', ['before' => 'csrf', 'uses' => 'UserController@postLogin'] );
+Route::get('/logout', ['before' => 'auth', 'uses' => 'UserController@getLogout'] );
 
 // Debug
 Route::get('/debug', 'DebugController@debug');
 
 // Get statistics for given redirect key
-Route::get('/stats/{redirect_key?}', 'RedirectController@statistics');
+Route::get('/stats/{redirect_key}', 'RedirectController@statistics');
 
 // Leave this last so routes.php can catch other site URIs first
 Route::get('/{redirect_key?}', 'RedirectController@callRedirect');

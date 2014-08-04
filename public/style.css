@@ -8,3 +8,13 @@ h1{
 	font-family: Roboto, sans-serif;
 	font-weight: 200;
 }
+
+.flash-message{
+	width: 100%;
+	background-color: #81BDFC;
+	top: 0px;
+	position: fixed;
+	left: 0px;
+	padding: 5px;
+	text-align: center;
+}
