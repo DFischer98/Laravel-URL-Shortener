@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100);
 
 body{
 	font-family: Roboto, sans-serif;
@@ -7,8 +7,10 @@ body{
 
 h1{
 	font-family: Roboto, sans-serif;
-	font-weight: 200;
+	font-weight: 100;
+	font-size: 72pt;
 	text-align: center;
+	margin-bottom: 25px;
 }
 
 .flash-message {
@@ -22,10 +24,12 @@ h1{
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	
 	border-style: solid;
-	border-width: 0px 0px 3px 0px;
+	border-width: 4px 0px 0px 0px;
 	border-color: #0099FF;
-	box-shadow: 0px 3px 5px #888888;
+	
+	box-shadow: 0px 4px 8px #888888;
 	overflow: hidden;
 
 
@@ -57,7 +61,7 @@ h1{
 	width:100%;
 	text-decoration: none;
 	height: 50px;
-	padding-top: 10px;
+	padding-top: 12px;
 	-o-transition:.5s;
 	-ms-transition:.5s;
 	-moz-transition:.5s;
@@ -78,21 +82,59 @@ h1{
 	background-color: B2E0FF;
 }
 
-.underline {
-	display: inline-block;
-	padding: 0px;
-	border-bottom: 1px solid;
-	border-color: transparent;
+.content {
+	padding: 20px;
+}
+
+.form {
+	text-align: center;
+	font-size: 24pt;
+
+}
+
+.unique_warning {
+	font-size: 12pt;
+}
+
+input {
+	height: 25px;
+	width: 35%;
+	position: relative;
+}
+
+input.button {
+	color: white;
+	font-size: 10pt;
+	width: 75px;
+	height: 31px;
+	position: relative;
+	left: -9px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+
+
+	background-color: #0099FF;
+	border-style: solid;
+	border-color:  #0099FF;
+	padding: 5px;
 	-o-transition:.5s;
 	-ms-transition:.5s;
 	-moz-transition:.5s;
 	-webkit-transition:.5s;
-	transition:.5s;
+	transition:.5s;	
+
 }
 
-.underline:hover{
-	border-color: black;
+input.button:hover {
+	background-color: #008AE6;
+	border-color: #008AE6;
 }
-.content {
-	padding: 20px;
+
+.unique_warning {
+	font-size: 11pt;
+	font-weight: 300;
 }

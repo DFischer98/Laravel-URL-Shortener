@@ -10,13 +10,7 @@
 			<div class='flash-message'>{{ Session::get('flash_message') }}</div>
 		@endif
 
-		<div class = 'navbar'>
-			<ul>
-				@yield ('navbar')
-
-				
-			</ul>
-		</div>
+		@include('navbar')
 
 		<div class = 'content'>
 			@yield ('content')
