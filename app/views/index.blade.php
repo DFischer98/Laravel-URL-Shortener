@@ -7,14 +7,14 @@
 	<div class = 'form'>
 	{{ Form::open(array('url' => '/generate')) }}
 
-		{{ Form::text('URL', null, array('placeholder'=>'Enter URL to shorten'))}}
+		{{ Form::text('URL', null, array('placeholder'=>'Enter URL to Shorten'))}}
 
-		{{ Form::submit('Shorten', ['class' => 'button']) }}
+		{{ Form::submit('Shorten', ['class' => 'button', 'id' => 'shorten']) }}
 	{{ Form::close() }}
 
 
 	@if(!Auth::check())
-		<p class = 'unique_warning'>Reminder: you are not signed in. Guests are not guaranteed to recieve unique redirect links. If you plan on tracking statistics for your links, please log in to ensure your redirect is unique.</p>
+		<p class = 'unique_warning'>Reminder: you are not logged in. Guests are not guaranteed to recieve unique redirect links. If you plan on tracking statistics for your links, please log in to ensure your redirect is unique.</p>
 	@endif
-	</div>
+</div>
 @stop

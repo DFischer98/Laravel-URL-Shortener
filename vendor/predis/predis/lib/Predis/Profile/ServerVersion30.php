@@ -12,18 +12,18 @@
 namespace Predis\Profile;
 
 /**
- * Server profile for Redis v2.8.x.
+ * Server profile for Redis v3.0.x.
  *
  * @author Daniele Alessandri <suppakilla@gmail.com>
  */
-class ServerVersion28 extends ServerProfile
+class ServerVersion30 extends ServerProfile
 {
     /**
      * {@inheritdoc}
      */
     public function getVersion()
     {
-        return '2.8';
+        return '3.0';
     }
 
     /**
@@ -253,6 +253,9 @@ class ServerVersion28 extends ServerProfile
 
             /* remote server control commands */
             'command'                   => 'Predis\Command\ServerCommand',
+
+            /* ---------------- Redis 3.0 ---------------- */
+
         );
     }
 }

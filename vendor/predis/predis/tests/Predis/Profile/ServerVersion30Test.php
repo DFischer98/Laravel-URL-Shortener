@@ -14,14 +14,14 @@ namespace Predis\Profile;
 /**
  *
  */
-class ServerVersion28Test extends PredisProfileTestCase
+class ServerVersion30Test extends PredisProfileTestCase
 {
     /**
      * {@inheritdoc}
      */
     public function getProfile($version = null)
     {
-        return new ServerVersion28();
+        return new ServerVersion30();
     }
 
     /**
@@ -29,7 +29,7 @@ class ServerVersion28Test extends PredisProfileTestCase
      */
     public function getExpectedVersion()
     {
-        return '2.8';
+        return '3.0';
     }
 
     /**

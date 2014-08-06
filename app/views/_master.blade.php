@@ -12,8 +12,8 @@
 
 		@include('navbar')
 
-		<div class = 'content'>
-			@yield ('content')
-		</div>
+		
+		@yield ('content')
+		
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <?php 
 
-Class UrlFormatting{
+Class UrlHelper{
 
 	//Makes sure all URLs start with http://www.
 	public static function completeUrl($incomplete_url){
@@ -12,12 +12,8 @@ Class UrlFormatting{
 			return $incomplete_url;
 		}
 
-		elseif(Str::lower(substr($incomplete_url, 0, 4)) == 'www.'){
-			return 'http://' . $incomplete_url;
-		}
-
 		else {
-			return 'http://www.' . $incomplete_url;
+			return 'http://' . $incomplete_url;
 		} ;
 	}
 
@@ -38,4 +34,12 @@ Class UrlFormatting{
 			return $given_url;
 		}
 	}
+	// http://stackoverflow.com/questions/4348912/get-title-of-website-via-link
+	public static function getTitle($Url){
+    $str = file_get_contents($Url);
+    if(strlen($str)>0){
+        preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
+        return $title[1];
+		}
+	}	
 }

@@ -24,15 +24,6 @@ class RedirectController extends BaseController{
 
 	}
 
-	public function statistics($redirect_key){
-		$redirect = URLRedirect::whereRedirectKey($redirect_key)->first();
-		echo $redirect->shortened_url . '<br>' . 'Hits: ' . $redirect->hits;
-
-		/*
-		* USE VIEW
-		*/
-	}
-
 	public function testRedirect($given_redirect){
 		$called_redirect = URLRedirect::whereRedirectKey($given_redirect)->first();
 		$called_redirect->hits = $called_redirect->hits + 1;
@@ -54,7 +45,7 @@ class RedirectController extends BaseController{
 
 		
 		//format for validation URL check
-		$url = UrlFormatting::completeUrl($url);
+		$url = UrlHelper::completeUrl($url);
 		$data = array('URL' => $url);
 
 

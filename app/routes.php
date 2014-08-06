@@ -30,8 +30,12 @@ Route::get('/my-account', ['before' => 'auth', 'uses' => 'UserController@getAcco
 // Debug
 Route::get('/debug', 'DebugController@debug');
 
+// Stats landing page
+Route::get('/stats', 'StatController@landing');
+
+
 // Get statistics for given redirect key
-Route::get('/stats/{redirect_key}', 'RedirectController@statistics');
+Route::get('/stats/{redirect_key}', 'StatController@redirectStat');
 
 // Leave this last so routes.php can catch other site URIs first
 Route::get('/{redirect_key?}', 'RedirectController@callRedirect');
