@@ -27,9 +27,7 @@ h1{
 	padding: 0;
 	background-color: #fff;
 	
-	border-style: solid;
-	border-width: 4px 0px 0px 0px;
-	border-color: #0099FF;
+
 	
 	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
 	overflow: hidden;
@@ -44,27 +42,48 @@ h1{
 }
 
 .navbar li {
-	box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-webkit-box-sizing:border-box;
+	/* Top blue border */
+	border-style: solid;
+	border-width: 4px 0px 0px 0px;
+	border-color: #0099FF;
+
 	display: inline-block;
 	float: left;
 	width: 25%;
 	height: 50px;
-	border-style: solid;
-	border-width: 0px 1px 0px 0px;
-	border-color: #888;
+
+	-o-transition:.2s;
+	-ms-transition:.2s;
+	-moz-transition:.2s;
+	-webkit-transition:.2s;
+	transition:.2s;
+
+
+}
+
+.navbar li:hover {
+	border-color: #008AE6;
 
 }
 
 .navbar a {
+	/* making sure grey divider borders dont change element width */
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;	
 	display: block;
 	color: black;
 	text-align: center;
 	width:100%;
 	text-decoration: none;
 	height: 50px;
+
+	/* divider borders */
+	
 	padding-top: 12px;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	border-color: #888;
 	-o-transition:.2s;
 	-ms-transition:.2s;
 	-moz-transition:.2s;
