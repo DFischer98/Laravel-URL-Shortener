@@ -32,6 +32,7 @@ h4 {
 
 #notification-bar {
 	color: #FFFFFF;
+	font-weight: 300;
 	padding: 5px;
 	text-align: center;
 	-webkit-animation: notification-bar-scroll 1s linear infinite;
@@ -178,6 +179,10 @@ input[type='text'] {
 	padding-left: 10px;
 }
 
+input [type='password'] {
+	padding-left: 10px;
+}
+
 .center input {
 	width: 100%;
 }
@@ -222,7 +227,7 @@ input[type='text'] {
 	margin: auto;
 }
 
-.statistic {
+.card {
 
 	
 
@@ -245,19 +250,26 @@ input[type='text'] {
 
 }
 
-.statistic:hover {
+.card:hover {
 	border-color: #008AE6;
 }
 
-.statistic h2 {
+.card h2 {
 	margin: 15px 0px 0px 0px;
 }
 
-.statistic h3 {
+.card h3 {
 	margin: 10px 0px 0px 0px;
 }
 
 #h1_info {
 	font-size: 42pt;
+}
 
+#result {
+	text-align: center;
+}
+
+#one-of-many {
+	margin-top: 40px;
 }

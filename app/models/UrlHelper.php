@@ -2,14 +2,14 @@
 
 Class UrlHelper{
 
-	//Makes sure all URLs start with http://www.
-	public static function completeUrl($url){
+	//Adds http:// to all URLs
+	public static function addHttp($url){
 
 		rtrim($url, "/");
 
 		
 		if((Str::lower(substr($url, 0, 7)) == 'http://')
-		|| (Str::lower(substr($url, 0, 8)) == 'https://')) {
+			|| (Str::lower(substr($url, 0, 8)) == 'https://')) {
 
 			return $url;
 		}
@@ -17,6 +17,32 @@ Class UrlHelper{
 		else {
 			return 'http://' . $url;
 		} ;
+	}
+
+	public static function fullUrl($url){
+		if((Str::lower(substr($url, 0, 11)) == 'http://www.')
+			|| (Str::lower(substr($url, 0, 12)) == 'https://www.')){
+			return $url;
+		}
+
+		elseif((Str::lower(substr($url, 0, 7)) == 'http://') 
+			&& (Str::lower(substr($url, 8, 10)) !== 'www')){
+				return  'http://www.' . substr($url, 8);
+			}
+
+		elseif((Str::lower(substr($url, 0, 8)) == 'https://') 
+			&& (Str::lower(substr($url, 9, 11)) !== 'www')){
+				return  'http://www.' . substr($url, 8);
+			}
+
+		elseif(Str::lower(substr($url, 0, 3)) == 'www'){
+			return 'http://' . $url;
+		}
+
+		else{
+			return  'http://www.' . $url;
+		}		
+
 	}
 
 	public static function stripUrl($given_url){
@@ -39,11 +65,18 @@ Class UrlHelper{
 	}
 	// http://stackoverflow.com/questions/4348912/get-title-of-website-via-link
 	public static function getTitle($url){
-    $str = file_get_contents($url);
-    if(strlen($str)>0){
-        preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
-        return $title[1];
+		
+		try {
+			$str = file_get_contents($url);
 		}
+		catch(Exception $e) { 
+			return $url;
+		}
+
+		if(strlen($str)>0){
+			preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
+			return $title[1];
+			}
 	}	
 
 	public static function getKey($url){

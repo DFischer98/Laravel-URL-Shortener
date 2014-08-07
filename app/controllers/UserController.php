@@ -92,7 +92,10 @@ class UserController extends BaseController {
 
 	public function getAccount() {
 		$redirects = Auth::user()->redirects;
-		echo Pre::render($redirects);
+		$data = $redirects->toArray();
+		$data = array('data' => $data);
+		//return Pre::render($data);
+		return View::make('my-account', $data);
 	}
 		
 }

@@ -42,20 +42,17 @@ class RedirectController extends BaseController{
 		// Get query data 
 		$url = Input::get('URL');
 
-		$url = UrlHelper::completeUrl($url);
-		
-		if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED) == false) {
-			return Redirect::to('/')->with('flash_neg', 'Invalid URL!');
-		}
-			
+		$url = UrlHelper::addHttp($url);
 		//redirect key recycling
 		if (!Auth::check()){
 			//look for an existing redirect that doesnt belong to a user
 			$existing_redirect = DB::table( 'redirects' )->where( 'shortened_url', '=', $url )->whereNull('user_id')->first();
 				//return found redirect 
 				if (! is_null($existing_redirect)){
-					return '<a href="' . URL::to('/', $existing_redirect->redirect_key) . '">'
-					. URL::to('/', $existing_redirect->redirect_key);
+					$data = array('redirect_key' => $existing_redirect->redirect_key,
+					'redirect_url' => $existing_redirect->shortened_url);
+
+					return View::make('result', $data);
 				}
 		}
 
@@ -87,12 +84,10 @@ class RedirectController extends BaseController{
 
 		$redirect->save();
 
-		/*
-		* SHOULD REDIRECT TO VIEW
-		*/
+		$data = array('redirect_key' => $redirect->redirect_key,
+					'redirect_url' => $redirect->shortened_url);
 
-		return '<a href="' . URL::to('/', $redirect->redirect_key) . '">'
-			. URL::to('/', $redirect->redirect_key);
+		return View::make('result', $data);
 
 	}	
 }
