@@ -42,78 +42,58 @@ class RedirectController extends BaseController{
 		// Get query data 
 		$url = Input::get('URL');
 
-
-		
-		//format for validation URL check
 		$url = UrlHelper::completeUrl($url);
-		$data = array('URL' => $url);
-
-
-		// Validate URL 
-		$rules = array(
-			'URL' => 'active_url'
-		);
-
-
-		 $urlValidator = Validator::make($data, $rules);
-
-
-		if ($urlValidator->passes()) {
-
-			//redirect key recycling
-			if (!Auth::check()){
-				//look for an existing redirect that doesnt belong to a user
-				$existing_redirect = DB::table( 'redirects' )->where( 'shortened_url', '=', $url )->whereNull('user_id')->first();
-					//return found redirect 
-					if (! is_null($existing_redirect)){
-						return '<a href="' . URL::to('/', $existing_redirect->redirect_key) . '">'
-						. URL::to('/', $existing_redirect->redirect_key);
-					}
-			}
-
-			//generate random key
-			$random_key = str_random(6);
-
-			//check if row exists in DB with key already used
-			$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
-
-			//generate new keys until unique value is made
-			while (! is_null($existing_key)){
-				$random_key = str_random(6);
-				$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
-			}
-
-			//make object & save redirect
-			$redirect = new URLRedirect;
-			$redirect->redirect_key = $random_key;
-			$redirect->shortened_url = $url;
-			$redirect->hits = 0;
+		
+		if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED) == false) {
+			return Redirect::to('/')->with('flash_neg', 'Invalid URL!');
+		}
 			
-			//add FK user_id if logged in	
-			if (Auth::check()){
-				$redirect->user_id = Auth::user()->id;
-			}
-			else{
-				$redirect->user_id = NULL;
-			}
-
-			$redirect->save();
-
-			/*
-			* SHOULD REDIRECT TO VIEW
-			*/
-
-			return '<a href="' . URL::to('/', $redirect->redirect_key) . '">'
-				. URL::to('/', $redirect->redirect_key);
-
-
+		//redirect key recycling
+		if (!Auth::check()){
+			//look for an existing redirect that doesnt belong to a user
+			$existing_redirect = DB::table( 'redirects' )->where( 'shortened_url', '=', $url )->whereNull('user_id')->first();
+				//return found redirect 
+				if (! is_null($existing_redirect)){
+					return '<a href="' . URL::to('/', $existing_redirect->redirect_key) . '">'
+					. URL::to('/', $existing_redirect->redirect_key);
+				}
 		}
 
-		//returns to homepage with flash error
-		else {
-			return Redirect::to('/')->with('flash_neg', 'Invalid URL!');;
+		//generate random key
+		$random_key = str_random(6);
+
+		//check if row exists in DB with key already used
+		$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
+
+		//generate new keys until unique value is made
+		while (! is_null($existing_key)){
+			$random_key = str_random(6);
+			$existing_key = DB::table('redirects')->where('redirect_key', '=', $random_key)->first();
 		}
 
-	}
+		//make object & save redirect
+		$redirect = new URLRedirect;
+		$redirect->redirect_key = $random_key;
+		$redirect->shortened_url = $url;
+		$redirect->hits = 0;
+		
+		//add FK user_id if logged in	
+		if (Auth::check()){
+			$redirect->user_id = Auth::user()->id;
+		}
+		else{
+			$redirect->user_id = NULL;
+		}
+
+		$redirect->save();
+
+		/*
+		* SHOULD REDIRECT TO VIEW
+		*/
+
+		return '<a href="' . URL::to('/', $redirect->redirect_key) . '">'
+			. URL::to('/', $redirect->redirect_key);
+
+	}	
 }
 

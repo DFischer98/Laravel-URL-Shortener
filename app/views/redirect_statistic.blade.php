@@ -8,6 +8,7 @@
 	<h3><a href = '{{URL::to('/', $redirect_key)}}'>{{URL::to('/', $redirect_key)}}</a></h3>
 	<p><a href = '{{$redirect_url}}'>{{str_limit($redirect_url, $limit = 50)}}</a></p>	
 	<p>Hits: {{$hits}}</p>
+	<p>Created on: {{Carbon::createFromTimeStamp($created_at)}} 
 
 
 

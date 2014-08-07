@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100);
 
 body {
-	font-family: Roboto, sans-serif;
+	font-family: Roboto, 'Helvetica', sans-serif;
 	margin: 0px;
 	background-color: #eee;
 }
@@ -14,25 +14,35 @@ h1 {
 	margin-bottom: 25px;
 }
 
-p {
+h4 {
 	text-align: center;
 	font-weight: 300;
 	font-size: 14pt;
 
 }
 
-.flash-neg{
-	width:100%;
-	background-color: #FF9933;
-	text-align:center;
-	padding:5px;
+@-webkit-keyframes notification-bar-scroll {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 64px;
+	}
 }
 
-.flash-pos{
-	width:100%;
-	background-color: #5CD65C;
-	text-align:center;
-	padding:5px;
+#notification-bar {
+	color: #FFFFFF;
+	padding: 5px;
+	text-align: center;
+	-webkit-animation: notification-bar-scroll 1s linear infinite;
+}
+
+.positive {
+	background-image: url("/images/diagonal_64_green.png");
+}
+
+.negative {
+	background-image: url("/images/diagonal_64_red.png");
 }
 
 .navbar {
@@ -94,7 +104,7 @@ p {
 
 	/* divider borders */
 	
-	padding-top: 12px;
+	line-height: 50px;
 	border-style: solid;
 	border-width: 0px 1px 0px 0px;
 	border-color: #888;

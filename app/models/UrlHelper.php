@@ -3,17 +3,19 @@
 Class UrlHelper{
 
 	//Makes sure all URLs start with http://www.
-	public static function completeUrl($incomplete_url){
+	public static function completeUrl($url){
 
+		rtrim($url, "/");
 
 		
-		if((Str::lower(substr($incomplete_url, 0, 7)) == 'http://')
-		|| (Str::lower(substr($incomplete_url, 0, 8)) == 'https://')) {
-			return $incomplete_url;
+		if((Str::lower(substr($url, 0, 7)) == 'http://')
+		|| (Str::lower(substr($url, 0, 8)) == 'https://')) {
+
+			return $url;
 		}
 
 		else {
-			return 'http://' . $incomplete_url;
+			return 'http://' . $url;
 		} ;
 	}
 
@@ -24,6 +26,7 @@ Class UrlHelper{
 
 		elseif(Str::lower(substr($given_url, 0, 12)) == 'https://www.'){
 			return substr($given_url, 12);
+
 		}
 
 		elseif(Str::lower(substr($given_url, 0, 4)) == 'www.'){

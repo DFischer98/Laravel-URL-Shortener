@@ -7,11 +7,11 @@
 	</head>
 	<body>
 		@if(Session::get('flash_pos'))
-			<div class='flash-pos'>{{ Session::get('flash_pos') }}</div>
+			<div class='positive' id='notification-bar'>{{ Session::get('flash_pos') }}</div>
 		@endif
 
 		@if(Session::get('flash_neg'))
-			<div class='flash-neg'>{{ Session::get('flash_neg') }}</div>
+			<div class='negative' id='notification-bar'>{{ Session::get('flash_neg') }}</div>
 		@endif
 
 		@include('navbar')

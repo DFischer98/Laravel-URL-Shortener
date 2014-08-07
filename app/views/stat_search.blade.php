@@ -2,7 +2,7 @@
 
 @section('content')
 	<h1>Redirect Statistics</h1>
-	<p>Look up a redirect link to find more information.</p>
+	<h4>Look up a redirect link to find more information.</p>
 	<div class = 'form'>
 		{{ Form::open(array('data' => '/stats')) }}
 

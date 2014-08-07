@@ -12,7 +12,9 @@ class StatController extends BaseController {
 		$data = array(
 			'redirect_key' => $redirect->redirect_key,
 			'redirect_url' => $redirect->shortened_url,
-			'hits' => $redirect->hits
+			'hits' => $redirect->hits,
+			'created_at' => $redirect->created_at,
+			'updated_at' => $redirect->updated_at
 			);
 
 
@@ -28,22 +30,7 @@ class StatController extends BaseController {
 		//get query
 		$link = Input::get('link');
 		$key = UrlHelper::getKey($link);
-
-
-		$redirect = URLRedirect::whereRedirectKey($link)->first();
-
-		if (is_null($redirect)){
-			return Redirect::to('/stat_search')->with('flash_neg', 'Invalid URL!');;
-		}
-		$data = array(
-			'redirect_key' => $redirect->redirect_key,
-			'redirect_url' => $redirect->shortened_url,
-			'hits' => $redirect->hits
-			);
-
-
-		return View::make('redirect_statistic', $data);		
-
+		
+		return Redirect::to("/stats/$key");
 	}
-
 }
