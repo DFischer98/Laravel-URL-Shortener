@@ -9,12 +9,12 @@
 
 		{{ Form::text('URL', null, array('placeholder'=>'Enter URL to Shorten'))}}
 
-		{{ Form::submit('Shorten', ['class' => 'button', 'id' => 'shorten']) }}
+		{{ Form::submit('Shorten', ['class' => 'button', 'id' => 'text-form']) }}
 	{{ Form::close() }}
 
 
 	@if(!Auth::check())
-		<p class = 'unique_warning'>Reminder: you are not logged in. Guests are not guaranteed to recieve unique redirect links. If you plan on tracking statistics for your links, please log in to ensure your redirect is unique.</p>
+		<p class = 'login-warning'>Reminder: you are not logged in. Guests are not guaranteed to recieve unique redirect links. If you plan on tracking statistics for your links, please log in to ensure your redirect is unique.</p>
 	@endif
 </div>
 @stop

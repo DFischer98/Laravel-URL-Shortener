@@ -1,12 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100);
 
-body{
+body {
 	font-family: Roboto, sans-serif;
 	margin: 0px;
 	background-color: #eee;
 }
 
-h1{
+h1 {
 	font-family: Roboto, sans-serif;
 	font-weight: 100;
 	font-size: 72pt;
@@ -14,9 +14,23 @@ h1{
 	margin-bottom: 25px;
 }
 
-.flash-message {
+p {
+	text-align: center;
+	font-weight: 300;
+	font-size: 14pt;
+
+}
+
+.flash-neg{
 	width:100%;
-	background-color: #A7A7A7;
+	background-color: #FF9933;
+	text-align:center;
+	padding:5px;
+}
+
+.flash-pos{
+	width:100%;
+	background-color: #5CD65C;
 	text-align:center;
 	padding:5px;
 }
@@ -116,7 +130,7 @@ h1{
 
 }
 
-.unique_warning {
+.login-warning {
 	font-size: 12pt;
 }
 
@@ -159,7 +173,7 @@ input[type='text'] {
 }
 
 
-#shorten {
+#text-form {
 	width: 75px;
 	height: 31px;
 	position: relative;
@@ -190,7 +204,7 @@ input[type='text'] {
 
 
 
-.unique_warning {
+.login-warning {
 	padding: 15px;
 	font-size: 11pt;
 	font-weight: 300;

@@ -19,7 +19,7 @@ class RedirectController extends BaseController{
 		}
 
 		//return to homepage with flash error
-		return Redirect::to('/')->with('flash_message', 'Invalid URL!');
+		return Redirect::to('/')->with('flash_neg', 'Invalid URL!');
 
 
 	}
@@ -51,7 +51,7 @@ class RedirectController extends BaseController{
 
 		// Validate URL 
 		$rules = array(
-			'URL' => 'url'
+			'URL' => 'active_url'
 		);
 
 
@@ -111,7 +111,7 @@ class RedirectController extends BaseController{
 
 		//returns to homepage with flash error
 		else {
-			return Redirect::to('/')->with('flash_message', 'Invalid URL!');;
+			return Redirect::to('/')->with('flash_neg', 'Invalid URL!');;
 		}
 
 	}

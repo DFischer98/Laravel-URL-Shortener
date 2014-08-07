@@ -35,11 +35,21 @@ Class UrlHelper{
 		}
 	}
 	// http://stackoverflow.com/questions/4348912/get-title-of-website-via-link
-	public static function getTitle($Url){
-    $str = file_get_contents($Url);
+	public static function getTitle($url){
+    $str = file_get_contents($url);
     if(strlen($str)>0){
         preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
         return $title[1];
 		}
 	}	
+
+	public static function getKey($url){
+		if (substr($url, -1) == '/'){
+			$str = substr($url, -7);
+			$str = substr($str, 0, 6);
+			return $str;
+		}
+		$str = substr($url, -6);
+		return $str;
+	}
 }

@@ -6,8 +6,12 @@
 		<link rel='stylesheet' type='text.css' href='../style.css'>
 	</head>
 	<body>
-		@if(Session::get('flash_message'))
-			<div class='flash-message'>{{ Session::get('flash_message') }}</div>
+		@if(Session::get('flash_pos'))
+			<div class='flash-pos'>{{ Session::get('flash_pos') }}</div>
+		@endif
+
+		@if(Session::get('flash_neg'))
+			<div class='flash-neg'>{{ Session::get('flash_neg') }}</div>
 		@endif
 
 		@include('navbar')

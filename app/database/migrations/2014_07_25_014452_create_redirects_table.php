@@ -21,7 +21,6 @@ class CreateRedirectsTable extends Migration {
         $table->string('redirect_key');
         $table->text('shortened_url');
         $table->integer('hits');
-        $table->boolean('custom_key');
         // Foreign Key
         $table->integer('user_id')->unsigned()->nullable();
 		$table->foreign('user_id')->references('id')->on('users'); 

@@ -30,7 +30,7 @@ class UserController extends BaseController {
 		if($validator->fails()) {
 			
 			return Redirect::to('/signup')
-				->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+				->with('flash_neg', 'Sign up failed; please fix the errors listed below.')
 				->withInput()
 				->withErrors($validator);
 		}
@@ -44,14 +44,14 @@ class UserController extends BaseController {
 		}
 		catch (Exception $e) {
 			return Redirect::to('/signup')
-				->with('flash_message', 'Sign up failed; please try again.')
+				->with('flash_neg', 'Sign up failed; please try again.')
 				->withInput();
 		}
 		
 		# Log in
 		Auth::login($user);
 		
-		return Redirect::to('/')->with('flash_message', 'Welcome!');
+		return Redirect::to('/')->with('flash_pos', 'Welcome!');
 				
 	}
 	
@@ -67,11 +67,11 @@ class UserController extends BaseController {
 		$credentials = Input::only('email', 'password');
 	
 		if (Auth::attempt($credentials, $remember = true)) {
-			return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
+			return Redirect::intended('/')->with('flash_pos', 'Welcome Back!');
 		}
 		else {
 			return Redirect::to('/login')
-				->with('flash_message', 'Log in failed; please try again.')
+				->with('flash_neg', 'Log in failed; please try again.')
 				->withInput();
 		}
 		

@@ -33,6 +33,9 @@ Route::get('/debug', 'DebugController@debug');
 // Stats landing page
 Route::get('/stats', 'StatController@landing');
 
+// stats search
+Route::post('/stats', 'StatController@postSearch');
+
 
 // Get statistics for given redirect key
 Route::get('/stats/{redirect_key}', 'StatController@redirectStat');
