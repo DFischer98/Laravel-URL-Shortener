@@ -73,10 +73,17 @@ Class UrlHelper{
 			return $url;
 		}
 
-		if(strlen($str)>0){
-			preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
-			return $title[1];
-			}
+		try{
+
+			if(strlen($str)>0){
+				preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
+				return $title[1];
+				}
+		}
+
+		catch(Exception $e) {
+			return $url;
+		}
 	}	
 
 	public static function getKey($url){

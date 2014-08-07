@@ -30,12 +30,64 @@ h4 {
 	}
 }
 
+@-moz-keyframes notification-bar-scroll {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 64px;
+	}
+}
+
+@-ms-keyframes notification-bar-scroll {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 64px;
+	}
+}
+
+@-o-keyframes notification-bar-scroll {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 64px;
+	}
+}
+
+@keyframes notification-bar-scroll {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 64px;
+	}
+}
+
+@-webkit-keyframes notification-bar-scroll {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 0 64px;
+	}
+}
+
+
+
 #notification-bar {
 	color: #FFFFFF;
 	font-weight: 300;
 	padding: 5px;
 	text-align: center;
 	-webkit-animation: notification-bar-scroll 1s linear infinite;
+	-moz-animation: notification-bar-scroll 1s linear infinite;
+	-ms-animation: notification-bar-scroll 1s linear infinite;
+	-o-animation: notification-bar-scroll 1s linear infinite;
+	animation: notification-bar-scroll 1s linear infinite;
+
 }
 
 .positive {
@@ -179,7 +231,7 @@ input[type='text'] {
 	padding-left: 10px;
 }
 
-input [type='password'] {
+input[type='password'] {
 	padding-left: 10px;
 }
 
