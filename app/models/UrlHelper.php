@@ -68,13 +68,6 @@ Class UrlHelper{
 		
 		try {
 			$str = file_get_contents($url);
-		}
-		catch(Exception $e) { 
-			return $url;
-		}
-
-		try{
-
 			if(strlen($str)>0){
 				preg_match("/\<title\>(.*)\<\/title\>/",$str,$title);
 				return $title[1];
@@ -82,7 +75,7 @@ Class UrlHelper{
 		}
 
 		catch(Exception $e) {
-			return $url;
+			return str_limit($url, 30);
 		}
 	}	
 
