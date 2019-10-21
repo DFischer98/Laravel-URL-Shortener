@@ -1,17 +1,17 @@
-#URL Shortener
+# URL Shortener (Laravel)
 
 ## Live URL
 Pending re-deployment due to changing terms of Red Hat's cloud services. Soon to be hosted on AWS!
 
 ## Description
 
-My project is a URL shortener that accepts user links and creates a 6 character random key which can be appended to the site in order to visit the full URL. This service was inspired by other URL shorteners, namely <http://goo.gl> and <http://bit.ly>. 
+My project is a URL shortener that accepts user links and creates a 6 character random key which can be appended to the site in order to visit the full URL. This service was inspired by other URL shorteners, namely <http://goo.gl> (RIP) and <http://bit.ly>. 
 
 Users can create an account in order to access special features, such as guaranteed unique keys and an account page to view all their redirects. 
 
-Statistics can be tracked for URLS, currently only the number of hits is visible but creation date and last visited dates are planned (Once I figure out carbon sytnax for timestamps). 
+Statistics can be tracked for URLS, currently only the number of hits is visible but creation date and last visited dates are planned.
 
-## Info for Teaching Team
+## Application Design
 
 My project uses two tables, one for storing redirects and one for storing users. There is a one-to-many relationship between users and redirects, as users are able to track their own shortened keys. 
 
