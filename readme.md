@@ -1,7 +1,7 @@
 #URL Shortener
 
 ## Live URL
-<http://p4-dfischer.rhcloud.com>
+Pending re-deployment due to changing terms of Red Hat's cloud services. Soon to be hosted on AWS!
 
 ## Description
 
